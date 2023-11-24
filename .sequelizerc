@@ -1,0 +1,15 @@
+const path = require('path');
+
+console.log(path.resolve('libs', 'database', 'src', 'config', 'config.ts'));
+
+module.exports = {
+  config: path.resolve('libs', 'database', 'src', 'config', 'config.json'),
+  'models-path': path.resolve('libs', 'database', 'src', 'lib', 'models'),
+  'migrations-path': path.resolve(
+    'libs',
+    'database',
+    'src',
+    'lib',
+    'migrations'
+  ),
+};
