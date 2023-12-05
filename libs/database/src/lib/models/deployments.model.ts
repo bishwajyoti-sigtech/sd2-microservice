@@ -18,16 +18,17 @@ export enum DeploymentStatus {
   underscored: true,
   modelName: 'Deployments',
 })
-export class DeploymentModel
+export class Deployment
   extends Model<
-    InferAttributes<DeploymentModel>,
-    InferCreationAttributes<DeploymentModel>
+    InferAttributes<Deployment>,
+    InferCreationAttributes<Deployment>
   >
   implements Model
 {
   @PrimaryKey
   @Column({
     type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
   })
   declare id: string;
 
