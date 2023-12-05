@@ -1,13 +1,14 @@
 import {
+  BelongsToMany,
   Column,
   DataType,
-  ForeignKey,
   Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
 import { ResearchInstanceType } from './research-instance-type.model';
 import { InferAttributes, InferCreationAttributes } from 'sequelize';
+import { PlatformSettingResearchInstanceType } from './platform-setting-research-instance-type.model';
 
 export enum EntityType {
   GLOBAL = 'global',
@@ -53,12 +54,12 @@ export class PlatformSettings extends Model<
   })
   declare default_notifications: string[];
 
-  @ForeignKey(() => ResearchInstanceType)
-  @Column({
-    type: DataType.UUID,
-    allowNull: false,
+  @BelongsToMany(() => ResearchInstanceType, {
+    through: {
+      model: () => PlatformSettingResearchInstanceType,
+    },
   })
-  declare default_research_instance: string;
+  defaultResearchInstanceType!: ResearchInstanceType;
 
   @Column({
     type: DataType.BOOLEAN,

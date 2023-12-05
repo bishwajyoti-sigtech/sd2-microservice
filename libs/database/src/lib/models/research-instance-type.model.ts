@@ -1,11 +1,18 @@
 import {
+  BelongsToMany,
   Column,
   DataType,
   Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { InferAttributes, InferCreationAttributes } from 'sequelize';
+import {
+  CreationOptional,
+  InferAttributes,
+  InferCreationAttributes,
+} from 'sequelize';
+import { PlatformSettings } from './platform-settings.model';
+import { PlatformSettingResearchInstanceType } from './platform-setting-research-instance-type.model';
 
 @Table({
   underscored: true,
@@ -46,10 +53,10 @@ export class ResearchInstanceType extends Model<
   })
   declare memory: string;
 
-  // @HasOne(() => PlatformSettings, {
-  //   foreignKey: {
-  //     name: 'default_research_instance',
-  //   },
-  // })
-  // declare platform_setting: CreationOptional<PlatformSettings>;
+  @BelongsToMany(() => PlatformSettings, {
+    through: {
+      model: () => PlatformSettingResearchInstanceType,
+    },
+  })
+  declare platform_settings: CreationOptional<PlatformSettings[]>;
 }
