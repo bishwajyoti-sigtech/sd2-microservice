@@ -1,12 +1,13 @@
 import { Deployment } from '@database';
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { QueryDeploymentsDto } from './dto/query-deployments-dto';
 import { CreateDeploymentDto } from './dto/create-deployment-dto';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class DeploymentsService {
   constructor(
-    @Inject('DEPLOYMENTS_REPOSITORY')
+    @InjectModel(Deployment)
     private deploymentRepository: typeof Deployment
   ) {}
 
