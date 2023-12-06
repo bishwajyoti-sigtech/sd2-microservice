@@ -20,7 +20,7 @@ export class CreateDeploymentDto
 
   @ApiProperty()
   @IsUUID()
-  workspace: string;
+  workspaceId: string;
 
   @ApiProperty()
   @IsUUID()

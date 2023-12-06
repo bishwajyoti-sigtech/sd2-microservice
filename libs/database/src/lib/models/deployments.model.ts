@@ -1,11 +1,18 @@
-import { InferAttributes, InferCreationAttributes } from 'sequelize';
 import {
+  CreationOptional,
+  InferAttributes,
+  InferCreationAttributes,
+} from 'sequelize';
+import {
+  BelongsTo,
   Column,
   DataType,
+  ForeignKey,
   Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
+import { Workspace } from './workspace.model';
 
 export enum DeploymentStatus {
   DEPLOYED = 'deployed',
@@ -38,11 +45,15 @@ export class Deployment
   })
   declare user: string;
 
+  @BelongsTo(() => Workspace)
+  declare workspace?: CreationOptional<Workspace>;
+
+  @ForeignKey(() => Workspace)
   @Column({
     type: DataType.UUID,
     allowNull: false,
   })
-  declare workspace: string;
+  declare workspaceId: string;
 
   @Column({
     type: DataType.UUID,

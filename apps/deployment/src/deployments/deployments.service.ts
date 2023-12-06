@@ -1,4 +1,4 @@
-import { Deployment } from '@database';
+import { Deployment, Workspace } from '@database';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { QueryDeploymentsDto } from './dto/query-deployments-dto';
 import { CreateDeploymentDto } from './dto/create-deployment-dto';
@@ -16,7 +16,9 @@ export class DeploymentsService {
   }
 
   async findById(id: string) {
-    const deployment = await this.deploymentRepository.findByPk(id);
+    const deployment = await this.deploymentRepository.findByPk(id, {
+      include: [Workspace],
+    });
     if (!deployment) {
       throw new NotFoundException('No deployment with given id was found');
     }

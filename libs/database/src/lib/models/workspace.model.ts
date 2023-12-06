@@ -13,6 +13,7 @@ import {
   InferAttributes,
   InferCreationAttributes,
 } from 'sequelize';
+import { Deployment } from './deployments.model';
 
 @Table({
   underscored: true,
@@ -44,13 +45,13 @@ export class Workspace extends Model<
     type: DataType.UUID,
     allowNull: false,
   })
-  declare original_template: string;
+  declare originalTemplate: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  declare gitea_repository_url: string;
+  declare giteaRepositoryUrl: string;
 
   @Column({
     type: DataType.UUID,
@@ -58,9 +59,12 @@ export class Workspace extends Model<
   })
   declare owner: string;
 
+  @HasMany(() => Deployment)
+  declare deployments: CreationOptional<Deployment[]>;
+  declare getDeployments: HasManyGetAssociationsMixin<Deployment[]>;
+
   @HasMany(() => WorkspacePermission)
   declare permissions: CreationOptional<WorkspacePermission[]>;
-
   declare getPermissions: HasManyGetAssociationsMixin<WorkspacePermission>;
 
   @Column({
@@ -73,5 +77,5 @@ export class Workspace extends Model<
     type: DataType.UUID,
     allowNull: false,
   })
-  declare created_by: string;
+  declare createdBy: string;
 }
