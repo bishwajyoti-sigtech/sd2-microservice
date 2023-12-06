@@ -1,5 +1,4 @@
 import { Deployment } from './deployments.model';
-import { PlatformSettingResearchInstanceType } from './platform-setting-research-instance-type.model';
 import { PlatformSettings } from './platform-settings.model';
 import { ResearchInstanceType } from './research-instance-type.model';
 import { WorkspacePermission } from './workspace-permission.model';
@@ -14,5 +13,4 @@ export const models = [
   WorkspacePermission,
   PlatformSettings,
   ResearchInstanceType,
-  PlatformSettingResearchInstanceType,
 ];
