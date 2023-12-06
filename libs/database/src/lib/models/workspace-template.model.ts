@@ -30,17 +30,17 @@ export class WorkspaceTemplate extends Model<
   @Column({
     type: DataType.ARRAY(DataType.STRING),
   })
-  declare file_list: string[];
+  declare fileList: string[];
 
   @Column({
     type: DataType.STRING,
   })
-  declare files_s3_bucket: string;
+  declare filesS3Bucket: string;
 
   @Column({
     type: DataType.STRING,
   })
-  declare files_s3_path: string;
+  declare filesS3Path: string;
 
   @Column({
     type: DataType.STRING,

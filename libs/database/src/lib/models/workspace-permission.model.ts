@@ -36,5 +36,5 @@ export class WorkspacePermission extends Model<
     type: DataType.ENUM<PermissionLevel>,
     values: Object.values(PermissionLevel),
   })
-  declare permission_level: PermissionLevel;
+  declare permissionLevel: PermissionLevel;
 }
