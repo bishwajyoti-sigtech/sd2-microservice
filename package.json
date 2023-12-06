@@ -2,19 +2,29 @@
   "name": "@sd2-microservice/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "nx affected -t build",
+    "start:deployment": "nx run deployment:serve"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
+    "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
+    "@nestjs/sequelize": "^10.0.0",
+    "@nestjs/swagger": "^7.1.16",
     "axios": "^1.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "joi": "^17.11.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "sequelize": "^6.35.1",
-    "sequelize-typescript": "^2.1.5",
+    "sequelize-typescript": "^2.1.6",
+    "sqlite3": "^5.1.6",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -44,5 +54,10 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.2.2"
-  }
+  },
+  "engines": {
+    "yarn": ">=4.0.2",
+    "node": ">=20.9.0"
+  },
+  "packageManager": "yarn@4.0.2"
 }
